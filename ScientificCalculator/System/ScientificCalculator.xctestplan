@@ -1,0 +1,39 @@
+{
+  "configurations" : [
+    {
+      "id" : "74D3D9A9-CB54-490E-8AF0-E3F485EB7C47",
+      "name" : "Configuration 1",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "codeCoverage" : {
+      "targets" : [
+        {
+          "containerPath" : "container:ScientificCalculator.xcodeproj",
+          "identifier" : "F3A4D6EA2B07622D00E2E022",
+          "name" : "ScientificCalculator"
+        }
+      ]
+    }
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:ScientificCalculator.xcodeproj",
+        "identifier" : "F3A4D6FA2B07623000E2E022",
+        "name" : "ScientificCalculatorTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:ScientificCalculator.xcodeproj",
+        "identifier" : "F3A4D7042B07623000E2E022",
+        "name" : "ScientificCalculatorUITests"
+      }
+    }
+  ],
+  "version" : 1
+}

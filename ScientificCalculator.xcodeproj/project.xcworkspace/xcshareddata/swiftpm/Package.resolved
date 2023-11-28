@@ -1,0 +1,14 @@
+{
+  "pins" : [
+    {
+      "identity" : "scientificcalculator-ios",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/jacky0207/ScientificCalculator-iOS",
+      "state" : {
+        "revision" : "870818801d4bea9de8f669497afc42164ad58b23",
+        "version" : "0.1.1"
+      }
+    }
+  ],
+  "version" : 2
+}
