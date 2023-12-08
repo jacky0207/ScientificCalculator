@@ -10,6 +10,9 @@ import SwiftUI
 
 struct CalculatorView: View, CalculatorViewProtocol {
     @ObservedObject var calculator: ScientificCalculator = ScientificCalculator()
+    
+    @State private var alertTitle = ""
+    @State private var isAlertPresented = false
 
     var body: some View {
         VStack(spacing: Dimen.spacing(.normal)) {
@@ -26,6 +29,9 @@ struct CalculatorView: View, CalculatorViewProtocol {
         }
         .frame(maxWidth: .infinity)
         .stackStyle(StackStyle.Calculator())
+        .alert(alertTitle, isPresented: $isAlertPresented) {
+            Button("ok", action: {})
+        }
     }
 
     func appendKey(_ key: CalculatorKey) {
@@ -44,7 +50,8 @@ struct CalculatorView: View, CalculatorViewProtocol {
         do {
             try calculator.calculate()
         } catch let error {
-            AppState.shared.setAlert(for: AlertParams(title: error.localizedDescription))
+            self.alertTitle = error.localizedDescription
+            self.isAlertPresented.toggle()
         }
     }
 }
