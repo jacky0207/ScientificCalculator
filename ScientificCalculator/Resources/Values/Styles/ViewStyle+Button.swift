@@ -29,17 +29,40 @@ extension CalculatorKeyButtonStyle {
 }
 
 struct CalculatorKeyButtonStyle: ButtonStyle {
-    var key: CalculatorKey
+    var backgroundColor: Color
+    var backgroundHighlightColor: Color
+
+    init(
+        backgroundColor: Color,
+        backgroundHighlightColor: Color
+    ) {
+        self.backgroundColor = backgroundColor
+        self.backgroundHighlightColor = backgroundHighlightColor
+    }
+
+    init(key: CalculatorKey) {
+        self.init(
+            backgroundColor: CalculatorKeyButtonStyle.backgroundColor(for: key),
+            backgroundHighlightColor: CalculatorKeyButtonStyle.backgroundHighlightColor(for: key)
+        )
+    }
 
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
-            .textStyle(TextStyle.Regular(fontSize: .xLarge))
+            .textStyle(TextStyle.CalculatorKeyText())
             .frame(width: Dimen.width(.buttonLabel), height: Dimen.height(.buttonLabel))
-            .padding(.horizontal, Dimen.spacing(.normal))
+            .frame(maxWidth: .infinity)
+            .padding(.horizontal, Dimen.spacing(.small))
             .padding(.vertical, Dimen.spacing(.xSmall))
             .background(
                 RoundedRectangle(cornerRadius: Dimen.corner(.normal))
-                    .fill(configuration.isPressed ? CalculatorKeyButtonStyle.backgroundHighlightColor(for: key) : CalculatorKeyButtonStyle.backgroundColor(for: key))
+                    .fill(configuration.isPressed ? backgroundHighlightColor : backgroundColor)
+                    .shadow(
+                        color: ColorStyle.shadow.color.opacity(Double(Dimen.shadow(.alpha))),
+                        radius: Dimen.corner(.xSmall),
+                        x: Dimen.shadow(.offsetX),
+                        y: Dimen.shadow(.offsetY)
+                    )
             )
     }
 }

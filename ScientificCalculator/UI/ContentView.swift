@@ -8,14 +8,19 @@
 import SwiftUI
 
 struct ContentView: View {
+    @Environment(\.diContainer) var diContainer
+    @ObservedObject var appState = AppState.shared
+
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+        Group {
+            switch appState.launchState {
+            case .slash:
+                SlashView()
+            case .main:
+                CalculatorView()
+            }
         }
-        .padding()
+        .alert(for: appState.alertParams, isPresented: $appState.isAlertPresented)
     }
 }
 

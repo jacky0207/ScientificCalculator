@@ -22,6 +22,7 @@ extension Dimen {
 
 extension Dimen {
     enum Corner: CGFloat {
+        case xSmall = 2
         case small = 6
         case normal = 10
         case large = 14

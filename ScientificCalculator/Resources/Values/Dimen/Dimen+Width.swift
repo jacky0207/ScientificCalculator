@@ -30,7 +30,7 @@ extension Dimen.Width {
     var rawValue: CGFloat {
         switch self {
         case .buttonLabel:
-            return 30
+            return 48
         }
     }
 }

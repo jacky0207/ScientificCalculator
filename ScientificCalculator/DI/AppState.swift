@@ -21,4 +21,13 @@ class AppState: ObservableObject {
     
     // MARK: Launch
     @Published var launchState: LaunchState = .slash
+
+    // MARK: Alert Message
+    @Published var isAlertPresented = false
+    private(set) var alertParams: AlertParams = AlertParams(title: "", message: "")
+
+    func setAlert(for params: AlertParams) {
+        alertParams = params
+        isAlertPresented = true
+    }
 }

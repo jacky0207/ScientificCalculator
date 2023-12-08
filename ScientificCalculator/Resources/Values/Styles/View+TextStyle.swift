@@ -27,7 +27,7 @@ struct TextStyle {
         func body(content: Content) -> some View {
             content
                 .foregroundColor(foregroundColor)
-                .font(FontStyle.regular.notoSansTC(for: fontSize))
+                .font(FontStyle.regular.orbitron(for: fontSize))
         }
     }
 
@@ -38,7 +38,7 @@ struct TextStyle {
         func body(content: Content) -> some View {
             content
                 .foregroundColor(foregroundColor)
-                .font(FontStyle.medium.notoSansTC(for: fontSize))
+                .font(FontStyle.medium.orbitron(for: fontSize))
         }
     }
 
@@ -49,7 +49,30 @@ struct TextStyle {
         func body(content: Content) -> some View {
             content
                 .foregroundColor(foregroundColor)
-                .font(FontStyle.bold.notoSansTC(for: fontSize))
+                .font(FontStyle.bold.orbitron(for: fontSize))
+        }
+    }
+}
+
+extension TextStyle {
+    struct CalculatorKeyText: ViewModifier {
+        func body(content: Content) -> some View {
+            content
+                .textStyle(TextStyle.Medium(fontSize: .large))
+        }
+    }
+
+    struct CalculatorDisplayEquation: ViewModifier {
+        func body(content: Content) -> some View {
+            content
+                .textStyle(TextStyle.Medium(foregroundColor: ColorStyle.textSecondary.color, fontSize: .xxLarge))
+        }
+    }
+
+    struct CalculatorDisplayAnswer: ViewModifier {
+        func body(content: Content) -> some View {
+            content
+                .textStyle(TextStyle.Medium(foregroundColor: ColorStyle.textSecondary.color, fontSize: .xxxLarge))
         }
     }
 }

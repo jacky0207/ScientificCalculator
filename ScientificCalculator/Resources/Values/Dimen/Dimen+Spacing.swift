@@ -21,6 +21,7 @@ extension Dimen {
 
 extension Dimen {
     enum Spacing: CGFloat {
+        case xxSmall = 2
         case xSmall = 4
         case small = 8
         case normal = 12
