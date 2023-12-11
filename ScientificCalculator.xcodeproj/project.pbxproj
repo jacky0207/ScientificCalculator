@@ -14,6 +14,7 @@
 		F33467472B238FD20069BE5C /* Orbitron-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F33467412B238E520069BE5C /* Orbitron-Regular.ttf */; };
 		F33467482B238FD20069BE5C /* Orbitron-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F334673C2B238E520069BE5C /* Orbitron-SemiBold.ttf */; };
 		F33467492B238FD20069BE5C /* Orbitron-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F334673F2B238E520069BE5C /* Orbitron-Bold.ttf */; };
+		F334674C2B25BAD20069BE5C /* CalculatorNumberFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F334674B2B25BAD20069BE5C /* CalculatorNumberFormatter.swift */; };
 		F349607A2B1EA384003C3652 /* CalculatorControlPanelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34960792B1EA384003C3652 /* CalculatorControlPanelView.swift */; };
 		F349607D2B1EA70D003C3652 /* CalculatorDisplayScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F349607C2B1EA70D003C3652 /* CalculatorDisplayScreenView.swift */; };
 		F349607F2B1EA7B4003C3652 /* CalculatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F349607E2B1EA7B4003C3652 /* CalculatorView.swift */; };
@@ -72,7 +73,7 @@
 		F3A4D79D2B0765B600E2E022 /* NotoSansTC-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = F3A4D77E2B0765B600E2E022 /* NotoSansTC-Medium.otf */; };
 		F3A4D79E2B0765B600E2E022 /* FontStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A4D77F2B0765B600E2E022 /* FontStyle.swift */; };
 		F3A4D79F2B0765B600E2E022 /* FontStyle+NotoSansTC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A4D7802B0765B600E2E022 /* FontStyle+NotoSansTC.swift */; };
-		F3B3BAD12B15733B00B2EDC7 /* ScientificCalculatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B3BAD02B15733B00B2EDC7 /* ScientificCalculatorTests.swift */; };
+		F3B3BAD12B15733B00B2EDC7 /* CalculatorNumberFormatterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B3BAD02B15733B00B2EDC7 /* CalculatorNumberFormatterTests.swift */; };
 		F3B3BAD42B15743F00B2EDC7 /* CalculatorKeyButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B3BAD32B15743F00B2EDC7 /* CalculatorKeyButton.swift */; };
 		F3B3BADD2B15CC4B00B2EDC7 /* CalculatorViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B3BADC2B15CC4B00B2EDC7 /* CalculatorViewProtocol.swift */; };
 		F3FD37FC2B173886007BFAE9 /* CalculatorButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FD37FB2B173886007BFAE9 /* CalculatorButton.swift */; };
@@ -104,6 +105,7 @@
 		F33467402B238E520069BE5C /* Orbitron-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Orbitron-Medium.ttf"; sourceTree = "<group>"; };
 		F33467412B238E520069BE5C /* Orbitron-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Orbitron-Regular.ttf"; sourceTree = "<group>"; };
 		F33467422B238F680069BE5C /* FontStyle+Orbitron.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FontStyle+Orbitron.swift"; sourceTree = "<group>"; };
+		F334674B2B25BAD20069BE5C /* CalculatorNumberFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorNumberFormatter.swift; sourceTree = "<group>"; };
 		F34960792B1EA384003C3652 /* CalculatorControlPanelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorControlPanelView.swift; sourceTree = "<group>"; };
 		F349607C2B1EA70D003C3652 /* CalculatorDisplayScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorDisplayScreenView.swift; sourceTree = "<group>"; };
 		F349607E2B1EA7B4003C3652 /* CalculatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorView.swift; sourceTree = "<group>"; };
@@ -166,7 +168,7 @@
 		F3A4D77E2B0765B600E2E022 /* NotoSansTC-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansTC-Medium.otf"; sourceTree = "<group>"; };
 		F3A4D77F2B0765B600E2E022 /* FontStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontStyle.swift; sourceTree = "<group>"; };
 		F3A4D7802B0765B600E2E022 /* FontStyle+NotoSansTC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FontStyle+NotoSansTC.swift"; sourceTree = "<group>"; };
-		F3B3BAD02B15733B00B2EDC7 /* ScientificCalculatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScientificCalculatorTests.swift; sourceTree = "<group>"; };
+		F3B3BAD02B15733B00B2EDC7 /* CalculatorNumberFormatterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorNumberFormatterTests.swift; sourceTree = "<group>"; };
 		F3B3BAD32B15743F00B2EDC7 /* CalculatorKeyButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorKeyButton.swift; sourceTree = "<group>"; };
 		F3B3BADC2B15CC4B00B2EDC7 /* CalculatorViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorViewProtocol.swift; sourceTree = "<group>"; };
 		F3FD37FB2B173886007BFAE9 /* CalculatorButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorButton.swift; sourceTree = "<group>"; };
@@ -210,6 +212,38 @@
 				F334673C2B238E520069BE5C /* Orbitron-SemiBold.ttf */,
 			);
 			path = Orbitron;
+			sourceTree = "<group>";
+		};
+		F334674A2B25BAA20069BE5C /* Calculator */ = {
+			isa = PBXGroup;
+			children = (
+				F334674E2B25C55F0069BE5C /* Formatter */,
+			);
+			path = Calculator;
+			sourceTree = "<group>";
+		};
+		F334674D2B25C1430069BE5C /* Calculator */ = {
+			isa = PBXGroup;
+			children = (
+				F334674F2B25C5680069BE5C /* Formatter */,
+			);
+			path = Calculator;
+			sourceTree = "<group>";
+		};
+		F334674E2B25C55F0069BE5C /* Formatter */ = {
+			isa = PBXGroup;
+			children = (
+				F334674B2B25BAD20069BE5C /* CalculatorNumberFormatter.swift */,
+			);
+			path = Formatter;
+			sourceTree = "<group>";
+		};
+		F334674F2B25C5680069BE5C /* Formatter */ = {
+			isa = PBXGroup;
+			children = (
+				F3B3BAD02B15733B00B2EDC7 /* CalculatorNumberFormatterTests.swift */,
+			);
+			path = Formatter;
 			sourceTree = "<group>";
 		};
 		F34960772B1EA2DC003C3652 /* Button */ = {
@@ -317,7 +351,7 @@
 		F3A4D6FE2B07623000E2E022 /* ScientificCalculatorTests */ = {
 			isa = PBXGroup;
 			children = (
-				F3B3BAD02B15733B00B2EDC7 /* ScientificCalculatorTests.swift */,
+				F334674D2B25C1430069BE5C /* Calculator */,
 			);
 			path = ScientificCalculatorTests;
 			sourceTree = "<group>";
@@ -456,6 +490,7 @@
 		F3A4D7382B07627600E2E022 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				F334674A2B25BAA20069BE5C /* Calculator */,
 				F3A4D73C2B07627600E2E022 /* ModelData.swift */,
 			);
 			path = Model;
@@ -786,6 +821,7 @@
 				F3A4D7972B0765B600E2E022 /* View+StackStyle.swift in Sources */,
 				F3A4D7422B07627600E2E022 /* LocalService.swift in Sources */,
 				F3A4D79E2B0765B600E2E022 /* FontStyle.swift in Sources */,
+				F334674C2B25BAD20069BE5C /* CalculatorNumberFormatter.swift in Sources */,
 				F3A4D73D2B07627600E2E022 /* DataService.swift in Sources */,
 				F3A4D74C2B07627600E2E022 /* ContentView.swift in Sources */,
 				F3A4D7462B07627600E2E022 /* DataError.swift in Sources */,
@@ -803,7 +839,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F3B3BAD12B15733B00B2EDC7 /* ScientificCalculatorTests.swift in Sources */,
+				F3B3BAD12B15733B00B2EDC7 /* CalculatorNumberFormatterTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1143,8 +1179,8 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/jacky0207/ScientificCalculator-iOS";
 			requirement = {
-				kind = upToNextMinorVersion;
-				minimumVersion = 0.1.0;
+				branch = "fix/package-access";
+				kind = branch;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */

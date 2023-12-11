@@ -72,6 +72,8 @@ extension TextStyle {
     struct CalculatorDisplayAnswer: ViewModifier {
         func body(content: Content) -> some View {
             content
+                .scaledToFit()
+                .minimumScaleFactor(0.1)
                 .textStyle(TextStyle.Medium(foregroundColor: ColorStyle.textSecondary.color, fontSize: .xxxLarge))
         }
     }

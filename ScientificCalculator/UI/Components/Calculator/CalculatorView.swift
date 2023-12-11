@@ -10,7 +10,7 @@ import SwiftUI
 
 struct CalculatorView: View, CalculatorViewProtocol {
     @ObservedObject var calculator: ScientificCalculator = ScientificCalculator()
-    
+
     @State private var alertTitle = ""
     @State private var isAlertPresented = false
 

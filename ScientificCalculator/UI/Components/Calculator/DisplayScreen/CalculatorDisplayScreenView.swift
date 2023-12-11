@@ -51,30 +51,17 @@ struct CalculatorDisplayScreenEquationView: View {
 
 struct CalculatorDisplayScreenAnswerView: View {
     private let tracking: CGFloat = 2.0
-    private let maxLength: Int = 10
-
     var answer: Double
-    var answerText: String {
-        let text = answer.truncatingRemainder(dividingBy: 1) == 0 ? String(format: "%.0f", answer) : String(answer)
-        if text.count > maxLength {
-            let startIndex = text.index(text.startIndex, offsetBy: 0)
-            let endOffset = text[text.index(text.startIndex, offsetBy: maxLength-1)] == "." ? maxLength : maxLength-1
-            let endIndex = text.index(text.startIndex, offsetBy: endOffset)
-            return String(text[startIndex...endIndex])
-        } else {
-            return text
-        }
-    }
 
     init(_ answer: Double) {
         self.answer = answer
     }
 
     var body: some View {
-        Text(answerText)
+        Text(CalculatorNumberFormatter().string(from: answer))
             .tracking(tracking)
-            .frame(maxWidth: .infinity, alignment: .trailing)
             .textStyle(TextStyle.CalculatorDisplayAnswer())
+            .frame(maxWidth: .infinity, alignment: .trailing)
     }
 }
 
@@ -83,7 +70,7 @@ struct CalculatorDisplayScreenView_Previews: PreviewProvider {
         VStack {
             CalculatorDisplayScreenView(text: "", answer: 0.0)
             CalculatorDisplayScreenView(text: "11+5", answer: 16.0)
-            CalculatorDisplayScreenView(text: "999999999999999999999999999999999999999999999999999999999999", answer: 999999999.01)
+            CalculatorDisplayScreenView(text: "999999999999999999999999999999999999999999999999999999999999", answer: 999999999999999.01)
         }
     }
 }
