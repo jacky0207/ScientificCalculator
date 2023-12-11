@@ -99,6 +99,7 @@ struct CalculatorBasicControlPanelView: View {
             HStack(spacing: Dimen.spacing(.small)) {
                 CalculatorKeyButton(.number(.zero), action: appendKeyAction)
                 CalculatorKeyButton(.number(.dot), action: appendKeyAction)
+                CalculatorKeyButton(.variable(.answer), action: appendKeyAction)
                 CalculatorCalculateButton(action: calculateAction)
             }
         }
