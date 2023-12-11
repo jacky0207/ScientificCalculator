@@ -15,20 +15,16 @@ struct CalculatorControlPanelView: View {
     var calculateAction: () -> Void
 
     @State private var isShiftSelected = false
+    @Binding var angle: CalculatorAngle
     var functionEnabled = true
     var variableEnabled = false
 
-    var actionEnabled: Bool {
-        return functionEnabled || variableEnabled
-    }
-
     var body: some View {
         VStack(spacing: Dimen.spacing(.small)) {
-            if actionEnabled {
-                CalculatorActionControlPanelView(
-                    isShiftSelected: $isShiftSelected
-                )
-            }
+            CalculatorActionControlPanelView(
+                isShiftSelected: $isShiftSelected,
+                angle: $angle
+            )
             if variableEnabled {
                 CalculatorVariableControlPanelView(
                     isShiftSelected: isShiftSelected,
@@ -54,13 +50,17 @@ struct CalculatorControlPanelView: View {
 
 struct CalculatorActionControlPanelView: View {
     @Binding var isShiftSelected: Bool
+    @Binding var angle: CalculatorAngle
 
     var body: some View {
         VStack(alignment: .leading, spacing: Dimen.spacing(.small)) {
             HStack(spacing: Dimen.spacing(.small)) {
-                CalculatorShiftButton(
-                    action: { isShiftSelected.toggle() }
-                )
+                CalculatorSecondaryButton(action: { isShiftSelected.toggle() }) {
+                    Text("Shift")
+                }
+                CalculatorSecondaryButton(action: { angle.toggle() }) {
+                    Text(angle.rawValue)
+                }
                 Spacer().frame(maxWidth: .infinity)
                 Spacer().frame(maxWidth: .infinity)
             }
@@ -81,8 +81,12 @@ struct CalculatorBasicControlPanelView: View {
                 CalculatorKeyButton(.number(.seven), action: appendKeyAction)
                 CalculatorKeyButton(.number(.eight), action: appendKeyAction)
                 CalculatorKeyButton(.number(.nine), action: appendKeyAction)
-                CalculatorDeleteButton(action: deleteAction)
-                CalculatorAllClearButton(action: clearAllAction)
+                CalculatorErrorButton(action: deleteAction) {
+                    Text("DEL")
+                }
+                CalculatorErrorButton(action: clearAllAction) {
+                    Text("AC")
+                }
             }
             HStack(spacing: Dimen.spacing(.small)) {
                 CalculatorKeyButton(.number(.four), action: appendKeyAction)
@@ -107,7 +111,9 @@ struct CalculatorBasicControlPanelView: View {
                     CalculatorKeyButton(.function(.pi), action: appendKeyAction)
                 }
                 CalculatorKeyButton(.variable(.answer), action: appendKeyAction)
-                CalculatorCalculateButton(action: calculateAction)
+                CalculatorPrimaryButton(action: calculateAction) {
+                    Text("EXE")
+                }
             }
         }
     }
@@ -184,9 +190,9 @@ struct CalculatorVariableControlPanelView: View {
 struct CalculatorControlPanelView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            CalculatorControlPanelView(appendKeyAction: { _ in }, deleteAction: {}, clearAllAction: {}, calculateAction: {}, functionEnabled: true, variableEnabled: true)
+            CalculatorControlPanelView(appendKeyAction: { _ in }, deleteAction: {}, clearAllAction: {}, calculateAction: {}, angle: .constant(.degree), functionEnabled: true, variableEnabled: true)
                 .previewDisplayName("Full Control Panel")
-            CalculatorControlPanelView(appendKeyAction: { _ in }, deleteAction: {}, clearAllAction: {}, calculateAction: {}, functionEnabled: false, variableEnabled: false)
+            CalculatorControlPanelView(appendKeyAction: { _ in }, deleteAction: {}, clearAllAction: {}, calculateAction: {}, angle: .constant(.degree), functionEnabled: false, variableEnabled: false)
                 .previewDisplayName("Basic Control Panel")
 
             CalculatorBasicControlPanelView(isShiftSelected: false, appendKeyAction: { _ in }, deleteAction: {}, clearAllAction: {}, calculateAction: {})

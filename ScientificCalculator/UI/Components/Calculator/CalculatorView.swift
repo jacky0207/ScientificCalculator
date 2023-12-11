@@ -24,7 +24,8 @@ struct CalculatorView: View, CalculatorViewProtocol {
                 appendKeyAction: appendKey,
                 deleteAction: delete,
                 clearAllAction: clearAll,
-                calculateAction: calculate
+                calculateAction: calculate,
+                angle: calculator.angle
             )
         }
         .frame(maxWidth: .infinity)

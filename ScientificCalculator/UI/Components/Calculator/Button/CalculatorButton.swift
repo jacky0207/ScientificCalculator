@@ -25,107 +25,44 @@ struct CalculatorButton<Label: View>: View {
     }
 }
 
-struct CalculatorDeleteButton: View {
+struct CalculatorPrimaryButton<Label: View>: View {
     var action: () -> Void
-
-    var body: some View {
-        CalculatorButton(
-            backgroundColor: ColorStyle.error.color,
-            backgroundHighlightColor: ColorStyle.errorHighlight.color,
-            action: action,
-            label: {
-                Text("DEL")
-            }
-        )
-    }
-}
-
-struct CalculatorAllClearButton: View {
-    var action: () -> Void
-
-    var body: some View {
-        CalculatorButton(
-            backgroundColor: ColorStyle.error.color,
-            backgroundHighlightColor: ColorStyle.errorHighlight.color,
-            action: action,
-            label: {
-                Text("AC")
-            }
-        )
-    }
-}
-
-struct CalculatorCalculateButton: View {
-    var action: () -> Void
+    var label: () -> Label
 
     var body: some View {
         CalculatorButton(
             backgroundColor: ColorStyle.primary.color,
             backgroundHighlightColor: ColorStyle.primaryHighlight.color,
             action: action,
-            label: {
-                Text("EXE")
-            }
+            label: label
         )
     }
 }
 
-struct CalculatorShiftButton: View {
+struct CalculatorSecondaryButton<Label: View>: View {
     var action: () -> Void
+    var label: () -> Label
 
     var body: some View {
         CalculatorButton(
             backgroundColor: ColorStyle.secondary.color,
             backgroundHighlightColor: ColorStyle.secondaryHighlight.color,
             action: action,
-            label: {
-                Text("Shift")
-            }
+            label: label
         )
     }
 }
 
-struct CalculatorFunctionSwitchButton: View {
+struct CalculatorErrorButton<Label: View>: View {
     var action: () -> Void
+    var label: () -> Label
 
     var body: some View {
         CalculatorButton(
-            backgroundColor: ColorStyle.secondary.color,
-            backgroundHighlightColor: ColorStyle.secondaryHighlight.color,
+            backgroundColor: ColorStyle.error.color,
+            backgroundHighlightColor: ColorStyle.errorHighlight.color,
             action: action,
-            label: {
-                Text("Fn")
-            }
-        )
-    }
-}
-
-struct CalculatorVariableSwitchButton: View {
-    var action: () -> Void
-
-    var body: some View {
-        CalculatorButton(
-            backgroundColor: ColorStyle.secondary.color,
-            backgroundHighlightColor: ColorStyle.secondaryHighlight.color,
-            action: action,
-            label: {
-                Text("Var")
-            }
-        )
-    }
-}
-
-struct CalculatorFunctionButton: View {
-    var action: () -> Void
-
-    var body: some View {
-        CalculatorButton(
-            backgroundColor: ColorStyle.secondary.color,
-            backgroundHighlightColor: ColorStyle.secondaryHighlight.color,
-            action: action,
-            label: {
-                Text("Fn")
-            }
+            label: label
         )
     }
 }
@@ -133,13 +70,9 @@ struct CalculatorFunctionButton: View {
 struct CalculatorButton_Previews: PreviewProvider {
     static var previews: some View {
         VStack {
-            CalculatorDeleteButton {}
-            CalculatorAllClearButton {}
-            CalculatorCalculateButton {}
-            CalculatorShiftButton {}
-            CalculatorFunctionSwitchButton {}
-            CalculatorVariableSwitchButton {}
-            CalculatorFunctionButton {}
+            CalculatorPrimaryButton(action: {}, label: { Text("Primary") })
+            CalculatorSecondaryButton(action: {}, label: { Text("Secondary") })
+            CalculatorErrorButton(action: {}, label: { Text("Error") })
         }
     }
 }
