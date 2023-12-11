@@ -34,17 +34,20 @@ class CalculatorNumberFormatter {
         return CalculatorFormattedNumber(number: number, power: power)
     }
 
-    func string(from number: Double) -> String {
+    func string(from number: Double, variable: CalculatorVariable) -> String {
+        var text = ""
         if !isFormatNeeded(for: number) {
-            return truncatedText(from: number)
+            text += truncatedText(from: number)
         } else {
-            var formattedNumber = formattedNumber(for: number)
-            var text = ""
+            let formattedNumber = formattedNumber(for: number)
             text += "\(truncatedText(from: formattedNumber.number))"
             text += "\(CalculatorKey.operator(.multiply).text)"
             text += "\(CalculatorKey.function(.powerOfTen).text)"
             text += "\(formattedNumber.power)"
-            return text
         }
+        if number != 0 && variable != .answer {
+            text += "->\(variable.rawValue)"
+        }
+        return text
     }
 }

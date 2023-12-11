@@ -18,14 +18,12 @@ struct CalculatorKeyButton: View {
     }
 
     var body: some View {
-        Button(
-            action: {
-                UIImpactFeedbackGenerator(style: .medium).impactOccurred()
-                action(key)
-            },
+        CalculatorButton(
+            backgroundColor: CalculatorKeyButtonStyle.backgroundColor(for: key),
+            backgroundHighlightColor: CalculatorKeyButtonStyle.backgroundHighlightColor(for: key),
+            action: { action(key) },
             label: { CalculatorKeyButtonLabel(key: key) }
         )
-        .buttonStyle(CalculatorKeyButtonStyle(key: key))
     }
 }
 

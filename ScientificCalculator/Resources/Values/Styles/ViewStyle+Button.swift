@@ -40,13 +40,6 @@ struct CalculatorKeyButtonStyle: ButtonStyle {
         self.backgroundHighlightColor = backgroundHighlightColor
     }
 
-    init(key: CalculatorKey) {
-        self.init(
-            backgroundColor: CalculatorKeyButtonStyle.backgroundColor(for: key),
-            backgroundHighlightColor: CalculatorKeyButtonStyle.backgroundHighlightColor(for: key)
-        )
-    }
-
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
             .textStyle(TextStyle.CalculatorKeyText())

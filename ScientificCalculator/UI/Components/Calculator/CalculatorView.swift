@@ -18,14 +18,18 @@ struct CalculatorView: View, CalculatorViewProtocol {
         VStack(spacing: Dimen.spacing(.normal)) {
             CalculatorDisplayScreenView(
                 text: calculator.text,
-                answer: calculator.answer
+                answer: calculator.answer,
+                variable: calculator.logs.last?.variable ?? .answer
             )
             CalculatorControlPanelView(
                 appendKeyAction: appendKey,
                 deleteAction: delete,
                 clearAllAction: clearAll,
                 calculateAction: calculate,
-                angle: calculator.angle
+                angle: calculator.angle,
+                variableEnabled: true,
+                isSaveToEnabled: true,
+                calculateToVariableAction: calculate
             )
         }
         .frame(maxWidth: .infinity)
@@ -50,6 +54,15 @@ struct CalculatorView: View, CalculatorViewProtocol {
     func calculate() {
         do {
             try calculator.calculate()
+        } catch let error {
+            self.alertTitle = error.localizedDescription
+            self.isAlertPresented.toggle()
+        }
+    }
+
+    func calculate(to variable: CalculatorVariable) {
+        do {
+            try calculator.calculate(to: variable)
         } catch let error {
             self.alertTitle = error.localizedDescription
             self.isAlertPresented.toggle()

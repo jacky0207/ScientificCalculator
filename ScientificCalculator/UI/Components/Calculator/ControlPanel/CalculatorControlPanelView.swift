@@ -14,31 +14,39 @@ struct CalculatorControlPanelView: View {
     var clearAllAction: () -> Void
     var calculateAction: () -> Void
 
-    @State private var isShiftSelected = false
-    @Binding var angle: CalculatorAngle
     var functionEnabled = true
+    @Binding var angle: CalculatorAngle
+    @State private var isFnSelected = false
+
     var variableEnabled = false
+    var isSaveToEnabled = false
+    @State private var isSaveToSelected = false
+    var calculateToVariableAction: (_ variable: CalculatorVariable) -> Void
 
     var body: some View {
         VStack(spacing: Dimen.spacing(.small)) {
             CalculatorActionControlPanelView(
-                isShiftSelected: $isShiftSelected,
+                isFnSelected: $isFnSelected,
+                isSaveToEnabled: isSaveToEnabled,
+                isSaveToSelected: $isSaveToSelected,
                 angle: $angle
             )
             if variableEnabled {
                 CalculatorVariableControlPanelView(
-                    isShiftSelected: isShiftSelected,
-                    appendKeyAction: appendKeyAction
+                    isFnSelected: isFnSelected,
+                    isSaveToSelected: isSaveToSelected,
+                    appendKeyAction: appendKeyAction,
+                    calculateToVariableAction: calculateToVariableAction
                 )
             }
             if functionEnabled {
                 CalculatorFunctionControlPanelView(
-                    isShiftSelected: isShiftSelected,
+                    isFnSelected: isFnSelected,
                     appendKeyAction: appendKeyAction
                 )
             }
             CalculatorBasicControlPanelView(
-                isShiftSelected: isShiftSelected,
+                isFnSelected: isFnSelected,
                 appendKeyAction: appendKeyAction,
                 deleteAction: deleteAction,
                 clearAllAction: clearAllAction,
@@ -49,27 +57,32 @@ struct CalculatorControlPanelView: View {
 }
 
 struct CalculatorActionControlPanelView: View {
-    @Binding var isShiftSelected: Bool
+    @Binding var isFnSelected: Bool
+    var isSaveToEnabled: Bool
+    @Binding var isSaveToSelected: Bool
     @Binding var angle: CalculatorAngle
 
     var body: some View {
         VStack(alignment: .leading, spacing: Dimen.spacing(.small)) {
             HStack(spacing: Dimen.spacing(.small)) {
-                CalculatorSecondaryButton(action: { isShiftSelected.toggle() }) {
-                    Text("Shift")
+                CalculatorSecondaryButton(action: { isFnSelected.toggle() }) {
+                    Text("Fn")
+                }
+                if isSaveToEnabled {
+                    CalculatorSecondaryButton(action: { isSaveToSelected.toggle() }) {
+                        Text("STO")
+                    }
                 }
                 CalculatorSecondaryButton(action: { angle.toggle() }) {
                     Text(angle.rawValue)
                 }
-                Spacer().frame(maxWidth: .infinity)
-                Spacer().frame(maxWidth: .infinity)
             }
         }
     }
 }
 
 struct CalculatorBasicControlPanelView: View {
-    var isShiftSelected: Bool
+    var isFnSelected: Bool
     var appendKeyAction: (_ key: CalculatorKey) -> Void
     var deleteAction: () -> Void
     var clearAllAction: () -> Void
@@ -105,7 +118,7 @@ struct CalculatorBasicControlPanelView: View {
             HStack(spacing: Dimen.spacing(.small)) {
                 CalculatorKeyButton(.number(.zero), action: appendKeyAction)
                 CalculatorKeyButton(.number(.dot), action: appendKeyAction)
-                if !isShiftSelected {
+                if !isFnSelected {
                     CalculatorKeyButton(.function(.exponent), action: appendKeyAction)
                 } else {
                     CalculatorKeyButton(.function(.pi), action: appendKeyAction)
@@ -120,12 +133,12 @@ struct CalculatorBasicControlPanelView: View {
 }
 
 struct CalculatorFunctionControlPanelView: View {
-    var isShiftSelected: Bool
+    var isFnSelected: Bool
     var appendKeyAction: (_ key: CalculatorKey) -> Void
 
     var body: some View {
         VStack(alignment: .leading, spacing: Dimen.spacing(.small)) {
-            if !isShiftSelected {
+            if !isFnSelected {
                 HStack(spacing: Dimen.spacing(.small)) {
                     CalculatorKeyButton(.function(.power), action: appendKeyAction)
                     CalculatorKeyButton(.function(.square), action: appendKeyAction)
@@ -161,26 +174,48 @@ struct CalculatorFunctionControlPanelView: View {
 }
 
 struct CalculatorVariableControlPanelView: View {
-    var isShiftSelected: Bool
+    var isFnSelected: Bool
+    var isSaveToSelected: Bool
     var appendKeyAction: (_ key: CalculatorKey) -> Void
+    var calculateToVariableAction: (_ variable: CalculatorVariable) -> Void
 
     var body: some View {
         VStack(alignment: .leading, spacing: Dimen.spacing(.small)) {
-            if !isShiftSelected {
-                HStack(spacing: Dimen.spacing(.small)) {
-                    CalculatorKeyButton(.variable(.a), action: appendKeyAction)
-                    CalculatorKeyButton(.variable(.b), action: appendKeyAction)
-                    CalculatorKeyButton(.variable(.c), action: appendKeyAction)
-                    Spacer().frame(maxWidth: .infinity)
-                    Spacer().frame(maxWidth: .infinity)
+            if !isFnSelected {
+                if !isSaveToSelected {
+                    HStack(spacing: Dimen.spacing(.small)) {
+                        CalculatorKeyButton(.variable(.a), action: appendKeyAction)
+                        CalculatorKeyButton(.variable(.b), action: appendKeyAction)
+                        CalculatorKeyButton(.variable(.c), action: appendKeyAction)
+                        Spacer().frame(maxWidth: .infinity)
+                        Spacer().frame(maxWidth: .infinity)
+                    }
+                } else {
+                    HStack(spacing: Dimen.spacing(.small)) {
+                        CalculatorVariableCalculationButton(.a, action: calculateToVariableAction)
+                        CalculatorVariableCalculationButton(.b, action: calculateToVariableAction)
+                        CalculatorVariableCalculationButton(.c, action: calculateToVariableAction)
+                        Spacer().frame(maxWidth: .infinity)
+                        Spacer().frame(maxWidth: .infinity)
+                    }
                 }
             } else {
-                HStack(spacing: Dimen.spacing(.small)) {
-                    CalculatorKeyButton(.variable(.d), action: appendKeyAction)
-                    CalculatorKeyButton(.variable(.x), action: appendKeyAction)
-                    CalculatorKeyButton(.variable(.y), action: appendKeyAction)
-                    Spacer().frame(maxWidth: .infinity)
-                    Spacer().frame(maxWidth: .infinity)
+                if !isSaveToSelected {
+                    HStack(spacing: Dimen.spacing(.small)) {
+                        CalculatorKeyButton(.variable(.d), action: appendKeyAction)
+                        CalculatorKeyButton(.variable(.x), action: appendKeyAction)
+                        CalculatorKeyButton(.variable(.y), action: appendKeyAction)
+                        Spacer().frame(maxWidth: .infinity)
+                        Spacer().frame(maxWidth: .infinity)
+                    }
+                } else {
+                    HStack(spacing: Dimen.spacing(.small)) {
+                        CalculatorVariableCalculationButton(.d, action: calculateToVariableAction)
+                        CalculatorVariableCalculationButton(.x, action: calculateToVariableAction)
+                        CalculatorVariableCalculationButton(.y, action: calculateToVariableAction)
+                        Spacer().frame(maxWidth: .infinity)
+                        Spacer().frame(maxWidth: .infinity)
+                    }
                 }
             }
         }
@@ -190,16 +225,16 @@ struct CalculatorVariableControlPanelView: View {
 struct CalculatorControlPanelView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            CalculatorControlPanelView(appendKeyAction: { _ in }, deleteAction: {}, clearAllAction: {}, calculateAction: {}, angle: .constant(.degree), functionEnabled: true, variableEnabled: true)
+            CalculatorControlPanelView(appendKeyAction: { _ in }, deleteAction: {}, clearAllAction: {}, calculateAction: {}, functionEnabled: true, angle: .constant(.degree), variableEnabled: true, isSaveToEnabled: true, calculateToVariableAction: { _ in })
                 .previewDisplayName("Full Control Panel")
-            CalculatorControlPanelView(appendKeyAction: { _ in }, deleteAction: {}, clearAllAction: {}, calculateAction: {}, angle: .constant(.degree), functionEnabled: false, variableEnabled: false)
+            CalculatorControlPanelView(appendKeyAction: { _ in }, deleteAction: {}, clearAllAction: {}, calculateAction: {}, functionEnabled: false, angle: .constant(.degree), variableEnabled: false, calculateToVariableAction: { _ in })
                 .previewDisplayName("Basic Control Panel")
 
-            CalculatorBasicControlPanelView(isShiftSelected: false, appendKeyAction: { _ in }, deleteAction: {}, clearAllAction: {}, calculateAction: {})
+            CalculatorBasicControlPanelView(isFnSelected: false, appendKeyAction: { _ in }, deleteAction: {}, clearAllAction: {}, calculateAction: {})
                 .previewDisplayName("Number Control Panel")
-            CalculatorFunctionControlPanelView(isShiftSelected: false, appendKeyAction: { _ in })
+            CalculatorFunctionControlPanelView(isFnSelected: false, appendKeyAction: { _ in })
                 .previewDisplayName("Function Control Panel")
-            CalculatorVariableControlPanelView(isShiftSelected: false, appendKeyAction: { _ in })
+            CalculatorVariableControlPanelView(isFnSelected: false, isSaveToSelected: false, appendKeyAction: { _ in }, calculateToVariableAction: { _ in })
                 .previewDisplayName("Variable Control Panel")
         }
     }
