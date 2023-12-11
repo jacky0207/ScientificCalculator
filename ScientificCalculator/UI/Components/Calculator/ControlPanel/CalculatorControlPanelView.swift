@@ -26,10 +26,11 @@ struct CalculatorControlPanelView: View {
     var body: some View {
         VStack(spacing: Dimen.spacing(.small)) {
             CalculatorActionControlPanelView(
+                functionEnabled: functionEnabled,
+                angle: $angle,
                 isFnSelected: $isFnSelected,
                 isSaveToEnabled: isSaveToEnabled,
-                isSaveToSelected: $isSaveToSelected,
-                angle: $angle
+                isSaveToSelected: $isSaveToSelected
             )
             if variableEnabled {
                 CalculatorVariableControlPanelView(
@@ -57,24 +58,30 @@ struct CalculatorControlPanelView: View {
 }
 
 struct CalculatorActionControlPanelView: View {
+    var functionEnabled: Bool
+    @Binding var angle: CalculatorAngle
     @Binding var isFnSelected: Bool
+
     var isSaveToEnabled: Bool
     @Binding var isSaveToSelected: Bool
-    @Binding var angle: CalculatorAngle
 
     var body: some View {
         VStack(alignment: .leading, spacing: Dimen.spacing(.small)) {
             HStack(spacing: Dimen.spacing(.small)) {
-                CalculatorSecondaryButton(action: { isFnSelected.toggle() }) {
-                    Text("Fn")
+                if functionEnabled {
+                    CalculatorSecondaryButton(action: { isFnSelected.toggle() }) {
+                        Text("Fn")
+                    }
                 }
                 if isSaveToEnabled {
                     CalculatorSecondaryButton(action: { isSaveToSelected.toggle() }) {
                         Text("STO")
                     }
                 }
-                CalculatorSecondaryButton(action: { angle.toggle() }) {
-                    Text(angle.rawValue)
+                if functionEnabled {
+                    CalculatorSecondaryButton(action: { angle.toggle() }) {
+                        Text(angle.rawValue)
+                    }
                 }
             }
         }

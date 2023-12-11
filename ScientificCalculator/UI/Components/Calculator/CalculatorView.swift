@@ -27,8 +27,6 @@ struct CalculatorView: View, CalculatorViewProtocol {
                 clearAllAction: clearAll,
                 calculateAction: calculate,
                 angle: calculator.angle,
-                variableEnabled: true,
-                isSaveToEnabled: true,
                 calculateToVariableAction: calculate
             )
         }
