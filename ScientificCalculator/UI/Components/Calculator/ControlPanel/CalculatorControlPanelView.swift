@@ -42,6 +42,7 @@ struct CalculatorControlPanelView: View {
                 )
             }
             CalculatorBasicControlPanelView(
+                isShiftSelected: isShiftSelected,
                 appendKeyAction: appendKeyAction,
                 deleteAction: deleteAction,
                 clearAllAction: clearAllAction,
@@ -68,6 +69,7 @@ struct CalculatorActionControlPanelView: View {
 }
 
 struct CalculatorBasicControlPanelView: View {
+    var isShiftSelected: Bool
     var appendKeyAction: (_ key: CalculatorKey) -> Void
     var deleteAction: () -> Void
     var clearAllAction: () -> Void
@@ -99,7 +101,11 @@ struct CalculatorBasicControlPanelView: View {
             HStack(spacing: Dimen.spacing(.small)) {
                 CalculatorKeyButton(.number(.zero), action: appendKeyAction)
                 CalculatorKeyButton(.number(.dot), action: appendKeyAction)
-                CalculatorKeyButton(.function(.exponent), action: appendKeyAction)
+                if !isShiftSelected {
+                    CalculatorKeyButton(.function(.exponent), action: appendKeyAction)
+                } else {
+                    CalculatorKeyButton(.function(.pi), action: appendKeyAction)
+                }
                 CalculatorKeyButton(.variable(.answer), action: appendKeyAction)
                 CalculatorCalculateButton(action: calculateAction)
             }
@@ -183,7 +189,7 @@ struct CalculatorControlPanelView_Previews: PreviewProvider {
             CalculatorControlPanelView(appendKeyAction: { _ in }, deleteAction: {}, clearAllAction: {}, calculateAction: {}, functionEnabled: false, variableEnabled: false)
                 .previewDisplayName("Basic Control Panel")
 
-            CalculatorBasicControlPanelView(appendKeyAction: { _ in }, deleteAction: {}, clearAllAction: {}, calculateAction: {})
+            CalculatorBasicControlPanelView(isShiftSelected: false, appendKeyAction: { _ in }, deleteAction: {}, clearAllAction: {}, calculateAction: {})
                 .previewDisplayName("Number Control Panel")
             CalculatorFunctionControlPanelView(isShiftSelected: false, appendKeyAction: { _ in })
                 .previewDisplayName("Function Control Panel")
