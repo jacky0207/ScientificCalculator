@@ -49,6 +49,8 @@ struct CalculatorKeyButtonLabel: View {
             }
         case .function(let function):
             switch function {
+            case .exponent:
+                Text("EXP")
             case .factorial, .inverseFraction, .square, .cube:
                 Text("x\(function.rawValue)")
             case .powerOfTen, .exponential:
