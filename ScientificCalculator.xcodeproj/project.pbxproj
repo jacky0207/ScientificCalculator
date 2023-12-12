@@ -1183,8 +1183,8 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/jacky0207/ScientificCalculator-iOS";
 			requirement = {
-				branch = "fix/package-access";
-				kind = branch;
+				kind = upToNextMinorVersion;
+				minimumVersion = 0.1.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
