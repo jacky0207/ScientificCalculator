@@ -17,7 +17,7 @@ struct ContentView: View {
             case .slash:
                 SlashView()
             case .main:
-                CalculatorView()
+                CalculatorHomeView(viewModel: CalculatorHomeViewModel(diContainer: diContainer))
             }
         }
         .alert(for: appState.alertParams, isPresented: $appState.isAlertPresented)
