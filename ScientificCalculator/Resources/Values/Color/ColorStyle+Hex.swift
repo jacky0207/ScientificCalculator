@@ -18,12 +18,22 @@ extension ColorStyle {
             return 0x4F678A
         case .secondaryHighlight:
             return 0x779BCE
+        case .error:
+            return 0xBB2F2F
+        case .errorHighlight:
+            return 0xD26161
         case .textPrimary:
             return 0xFFFFFF
         case .textSecondary:
             return 0x000000
         case .background:
             return 0xC0D8FB
+        case .calculatorBackground:
+            return 0xDEDEDE
+        case .calculatorDisplayScreenBackground:
+            return 0xE1EBF0
+        case .shadow:
+            return 0x8B8B8B
         }
     }
 

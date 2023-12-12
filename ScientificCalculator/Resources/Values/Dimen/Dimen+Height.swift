@@ -30,7 +30,7 @@ extension Dimen.Height {
     var rawValue: CGFloat {
         switch self {
         case .buttonLabel:
-            return Dimen.width(.buttonLabel)
+            return 36
         }
     }
 }

@@ -8,15 +8,16 @@
 import SwiftUI
 
 enum FontStyle: String {
-    case regular = "NotoSansTC-Regular"
-    case medium = "NotoSansTC-Medium"
-    case bold = "NotoSansTC-Bold"
+    case regular
+    case medium
+    case bold
 }
 
 enum FontSize: CGFloat {
-    case small = 12
+    case small = 8
     case normal = 14
-    case large = 16
-    case xLarge = 18
-    case xxLarge = 20
+    case large = 18
+    case xLarge = 22
+    case xxLarge = 26
+    case xxxLarge = 32
 }

@@ -18,11 +18,12 @@ struct CalculatorKeyButton: View {
     }
 
     var body: some View {
-        Button(
+        CalculatorButton(
+            backgroundColor: CalculatorKeyButtonStyle.backgroundColor(for: key),
+            backgroundHighlightColor: CalculatorKeyButtonStyle.backgroundHighlightColor(for: key),
             action: { action(key) },
             label: { CalculatorKeyButtonLabel(key: key) }
         )
-        .buttonStyle(CalculatorKeyButtonStyle(key: key))
     }
 }
 
@@ -45,7 +46,16 @@ struct CalculatorKeyButtonLabel: View {
                 Image(systemName: "divide")
             }
         case .function(let function):
-            Text(function.rawValue)
+            switch function {
+            case .exponent:
+                Text("EXP")
+            case .factorial, .inverseFraction, .square, .cube:
+                Text("x\(function.rawValue)")
+            case .powerOfTen, .exponential:
+                Text("\(function.rawValue)\u{02E3}")
+            default:
+                Text(function.rawValue)
+            }
         case .variable(let variable):
             Text(variable.rawValue)
         case .bracket(let bracket):
@@ -54,38 +64,14 @@ struct CalculatorKeyButtonLabel: View {
     }
 }
 
-struct CalculatorButton_Previews: PreviewProvider {
+struct CalculatorKeyButton_Previews: PreviewProvider {
     static var previews: some View {
-        Group {
-            CalculatorKeyButton(.number(.one)) { key in
-
-            }
-            .previewLayout(.sizeThatFits)
-            .previewDisplayName("Number")
-
-            CalculatorKeyButton(.operator(.plus)) { key in
-
-            }
-            .previewLayout(.sizeThatFits)
-            .previewDisplayName("Operator")
-
-            CalculatorKeyButton(.function(.sin)) { key in
-
-            }
-            .previewLayout(.sizeThatFits)
-            .previewDisplayName("Function")
-
-            CalculatorKeyButton(.variable(.a)) { key in
-
-            }
-            .previewLayout(.sizeThatFits)
-            .previewDisplayName("Variable")
-
-            CalculatorKeyButton(.bracket(.openBracket)) { key in
-
-            }
-            .previewLayout(.sizeThatFits)
-            .previewDisplayName("Bracket")
+        VStack {
+            CalculatorKeyButton(.number(.one)) { _ in }
+            CalculatorKeyButton(.operator(.plus)) { _ in }
+            CalculatorKeyButton(.function(.sin)) { _ in }
+            CalculatorKeyButton(.variable(.a)) { _ in }
+            CalculatorKeyButton(.bracket(.openBracket)) { _ in }
         }
     }
 }

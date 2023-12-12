@@ -5,8 +5,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/jacky0207/ScientificCalculator-iOS",
       "state" : {
-        "revision" : "870818801d4bea9de8f669497afc42164ad58b23",
-        "version" : "0.1.1"
+        "revision" : "056602a547d41be1bd6f47c7666b539826108baa",
+        "version" : "0.1.3"
       }
     }
   ],

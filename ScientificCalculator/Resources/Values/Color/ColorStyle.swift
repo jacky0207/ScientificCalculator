@@ -12,7 +12,12 @@ enum ColorStyle {
     case primaryHighlight
     case secondary
     case secondaryHighlight
+    case error
+    case errorHighlight
     case textPrimary
     case textSecondary
     case background
+    case calculatorBackground
+    case calculatorDisplayScreenBackground
+    case shadow
 }

@@ -15,13 +15,6 @@ extension FontStyle {
     }
 
     func notoSansTC(for size: FontSize) -> Font {
-        switch self {
-        case .regular:
-            return Font.custom(NotoSansTC.regular.rawValue, size: size.rawValue)
-        case .medium:
-            return Font.custom(NotoSansTC.medium.rawValue, size: size.rawValue)
-        case .bold:
-            return Font.custom(NotoSansTC.bold.rawValue, size: size.rawValue)
-        }
+        return Font.custom(NotoSansTC.regular.rawValue, size: size.rawValue)
     }
 }

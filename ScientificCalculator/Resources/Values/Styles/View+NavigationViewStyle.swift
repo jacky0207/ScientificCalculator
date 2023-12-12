@@ -23,11 +23,11 @@ struct NavigationViewStyle {
             appearance.shadowColor = .clear
             appearance.shadowImage = UIImage()  // remove default shadow image
             appearance.titleTextAttributes = [
-                .font: UIFont(name: FontStyle.NotoSansTC.bold.rawValue, size: FontSize.large.rawValue)!,
+                .font: UIFont(name: FontStyle.Orbitron.bold.rawValue, size: FontSize.large.rawValue)!,
                 .foregroundColor: UIColor(ColorStyle.textPrimary.color)
             ]
             appearance.largeTitleTextAttributes = [
-                .font: UIFont(name: FontStyle.NotoSansTC.bold.rawValue, size: 36)!,
+                .font: UIFont(name: FontStyle.Orbitron.bold.rawValue, size: 36)!,
                 .foregroundColor: UIColor(ColorStyle.textPrimary.color)
             ]
             UINavigationBar.appearance().standardAppearance = appearance
