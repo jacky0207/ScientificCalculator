@@ -10,6 +10,7 @@ import SwiftUI
 
 struct CalculatorView: View, CalculatorViewProtocol {
     @ObservedObject var calculator: ScientificCalculator = ScientificCalculator()
+    @State private var isEquationExecuted = true
 
     @State private var alertTitle = ""
     @State private var isAlertPresented = false
@@ -38,6 +39,10 @@ struct CalculatorView: View, CalculatorViewProtocol {
     }
 
     func appendKey(_ key: CalculatorKey) {
+        if isEquationExecuted {
+            calculator.deleteAll()
+            isEquationExecuted.toggle()
+        }
         calculator.appendKey(key)
     }
 
@@ -52,6 +57,7 @@ struct CalculatorView: View, CalculatorViewProtocol {
     func calculate() {
         do {
             try calculator.calculate()
+            isEquationExecuted = true
         } catch let error {
             self.alertTitle = error.localizedDescription
             self.isAlertPresented.toggle()
@@ -61,6 +67,7 @@ struct CalculatorView: View, CalculatorViewProtocol {
     func calculate(to variable: CalculatorVariable) {
         do {
             try calculator.calculate(to: variable)
+            isEquationExecuted = true
         } catch let error {
             self.alertTitle = error.localizedDescription
             self.isAlertPresented.toggle()
