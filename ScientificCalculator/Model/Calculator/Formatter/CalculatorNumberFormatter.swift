@@ -34,7 +34,7 @@ class CalculatorNumberFormatter {
         return CalculatorFormattedNumber(number: number, power: power)
     }
 
-    func string(from number: Double, variable: CalculatorVariable) -> String {
+    func string(number: Double, variable: CalculatorVariable) -> String {
         var text = ""
         if !isFormatNeeded(for: number) {
             text += truncatedText(from: number)
@@ -49,5 +49,9 @@ class CalculatorNumberFormatter {
             text += "->\(variable.rawValue)"
         }
         return text
+    }
+
+    func string(equation: String, number: Double, variable: CalculatorVariable) -> String {
+        return equation + "=" + string(number: number, variable: variable)
     }
 }

@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct DataList<Data: RandomAccessCollection & Hashable, Content: View, SwipeContent: View>: View {
+struct DataList<Data: RandomAccessCollection, Content: View, SwipeContent: View>: View {
     var data: Data
     var spacing: CGFloat
     var padding: EdgeInsets
@@ -76,7 +76,7 @@ struct DataNoItemView: View {
     }
 }
 
-struct DataItemList<Data: RandomAccessCollection & Hashable, Content: View, SwipeContent: View>: View {
+struct DataItemList<Data: RandomAccessCollection, Content: View, SwipeContent: View>: View {
     var iconWidth: CGFloat = 24.0
 
     var data: Data
@@ -132,7 +132,6 @@ struct DataItemList<Data: RandomAccessCollection & Hashable, Content: View, Swip
                 .listRowStyle(DataListRowStyle())
         }
         .listStyle(DataListStyle())
-        .id(data)  // disable animation to avoid overlap with observed object change
         .environment(\.editMode, .constant(.inactive))
         .environment(\.defaultMinListRowHeight, 1)
         .accessibilityElement(children: .combine)

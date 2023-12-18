@@ -15,13 +15,22 @@ struct CalculatorView: View, CalculatorViewProtocol {
     @State private var alertTitle = ""
     @State private var isAlertPresented = false
 
+    var historyEnabled: Bool = false
+
     var body: some View {
         VStack(spacing: Dimen.spacing(.normal)) {
-            CalculatorDisplayScreenView(
-                text: calculator.text,
-                answer: calculator.answer,
-                variable: calculator.logs.last?.variable ?? .answer
-            )
+            if !historyEnabled {
+                CalculatorDisplayScreenView(
+                    text: calculator.text,
+                    answer: calculator.answer,
+                    variable: calculator.logs.last?.variable ?? .answer
+                )
+            } else {
+                CalculatorHistoryDisplayScreenView(
+                    text: calculator.text,
+                    logs: calculator.logs
+                )
+            }
             CalculatorControlPanelView(
                 appendKeyAction: appendKey,
                 deleteAction: delete,
@@ -78,7 +87,8 @@ struct CalculatorView: View, CalculatorViewProtocol {
 struct CalculatorView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            CalculatorView()
+            CalculatorView(historyEnabled: false)
+            CalculatorView(historyEnabled: true)
         }
     }
 }

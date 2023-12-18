@@ -24,7 +24,6 @@ struct CalculatorDisplayScreenView: View {
 
 struct CalculatorDisplayScreenEquationView: View {
     private let tracking: CGFloat = 2.0
-
     var text: String
 
     init(_ text: String) {
@@ -32,22 +31,31 @@ struct CalculatorDisplayScreenEquationView: View {
     }
 
     var body: some View {
-        ScrollViewReader { proxy in
-            ScrollView(.horizontal, showsIndicators: false) {
-                HStack {
-                    Text(text.isEmpty ? " " : text)
-                        .tracking(tracking)
-                        .textStyle(TextStyle.CalculatorDisplayEquation())
+        if text.isEmpty {
+            emptyContent()
+        } else {
+            ScrollViewReader { proxy in
+                ScrollView(.horizontal, showsIndicators: false) {
+                    content(text)
+                        .rotationEffect(Angle(degrees: 180))
                         .id(0)
                 }
-            }
-            .onAppear {
-                proxy.scrollTo(0, anchor: .trailing)
-            }
-            .onChange(of: text) { _ in
-                proxy.scrollTo(0, anchor: .trailing)
+                .rotationEffect(Angle(degrees: 180))
+                .onChange(of: text) { _ in
+                    proxy.scrollTo(0, anchor: .leading)
+                }
             }
         }
+    }
+
+    func emptyContent() -> some View {
+        Text(" ")
+            .textStyle(TextStyle.CalculatorDisplayEquation())
+    }
+
+    func content(_ text: String) -> some View {
+        Text(text)
+            .textStyle(TextStyle.CalculatorDisplayEquation())
     }
 }
 
@@ -62,7 +70,7 @@ struct CalculatorDisplayScreenAnswerView: View {
     }
 
     var body: some View {
-        Text(CalculatorNumberFormatter().string(from: answer, variable: variable))
+        Text(CalculatorNumberFormatter().string(number: answer, variable: variable))
             .tracking(tracking)
             .textStyle(TextStyle.CalculatorDisplayAnswer())
             .frame(maxWidth: .infinity, alignment: .trailing)

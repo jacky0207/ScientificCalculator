@@ -80,6 +80,7 @@
 		F3B3BAD12B15733B00B2EDC7 /* CalculatorNumberFormatterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B3BAD02B15733B00B2EDC7 /* CalculatorNumberFormatterTests.swift */; };
 		F3B3BAD42B15743F00B2EDC7 /* CalculatorKeyButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B3BAD32B15743F00B2EDC7 /* CalculatorKeyButton.swift */; };
 		F3B3BADD2B15CC4B00B2EDC7 /* CalculatorViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B3BADC2B15CC4B00B2EDC7 /* CalculatorViewProtocol.swift */; };
+		F3C06F212B29AF810094F494 /* CalculatorHistoryDisplayScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C06F202B29AF810094F494 /* CalculatorHistoryDisplayScreenView.swift */; };
 		F3FD37FC2B173886007BFAE9 /* CalculatorButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FD37FB2B173886007BFAE9 /* CalculatorButton.swift */; };
 		F3FD38042B174740007BFAE9 /* AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FD38032B174740007BFAE9 /* AlertView.swift */; };
 /* End PBXBuildFile section */
@@ -179,6 +180,7 @@
 		F3B3BAD02B15733B00B2EDC7 /* CalculatorNumberFormatterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorNumberFormatterTests.swift; sourceTree = "<group>"; };
 		F3B3BAD32B15743F00B2EDC7 /* CalculatorKeyButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorKeyButton.swift; sourceTree = "<group>"; };
 		F3B3BADC2B15CC4B00B2EDC7 /* CalculatorViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorViewProtocol.swift; sourceTree = "<group>"; };
+		F3C06F202B29AF810094F494 /* CalculatorHistoryDisplayScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorHistoryDisplayScreenView.swift; sourceTree = "<group>"; };
 		F3FD37FB2B173886007BFAE9 /* CalculatorButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorButton.swift; sourceTree = "<group>"; };
 		F3FD38032B174740007BFAE9 /* AlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -286,6 +288,7 @@
 			isa = PBXGroup;
 			children = (
 				F349607C2B1EA70D003C3652 /* CalculatorDisplayScreenView.swift */,
+				F3C06F202B29AF810094F494 /* CalculatorHistoryDisplayScreenView.swift */,
 			);
 			path = DisplayScreen;
 			sourceTree = "<group>";
@@ -829,6 +832,7 @@
 				F3A4D7912B0765B600E2E022 /* Dimen.swift in Sources */,
 				F33467512B26E7900069BE5C /* CalculatorVariableCalculationButton.swift in Sources */,
 				F349607D2B1EA70D003C3652 /* CalculatorDisplayScreenView.swift in Sources */,
+				F3C06F212B29AF810094F494 /* CalculatorHistoryDisplayScreenView.swift in Sources */,
 				F3A4D7812B0765B600E2E022 /* String+Localizable.swift in Sources */,
 				F3A4D78F2B0765B600E2E022 /* Dimen+Border.swift in Sources */,
 				F34960872B1EB374003C3652 /* Dimen+Shadow.swift in Sources */,
@@ -1203,8 +1207,8 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/jacky0207/ScientificCalculator-iOS";
 			requirement = {
-				kind = upToNextMinorVersion;
-				minimumVersion = 0.1.0;
+				branch = enhancement/history;
+				kind = branch;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */

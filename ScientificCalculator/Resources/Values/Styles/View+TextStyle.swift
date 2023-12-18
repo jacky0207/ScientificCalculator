@@ -77,4 +77,13 @@ extension TextStyle {
                 .textStyle(TextStyle.Medium(foregroundColor: ColorStyle.textSecondary.color, fontSize: .xxxLarge))
         }
     }
+
+    struct CalculatorDisplayLog: ViewModifier {
+        func body(content: Content) -> some View {
+            content
+                .lineLimit(2)
+                .truncationMode(.middle)
+                .textStyle(TextStyle.Medium(foregroundColor: ColorStyle.textSecondary.color, fontSize: .large))
+        }
+    }
 }
