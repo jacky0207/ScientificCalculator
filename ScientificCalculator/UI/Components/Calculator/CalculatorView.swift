@@ -46,6 +46,8 @@ struct CalculatorView: View, CalculatorViewProtocol {
                 calculateToVariableAction: calculate
             )
         }
+        .accessibilityElement(children: .contain)
+        .accessibilityIdentifier("calculator")
         .frame(maxWidth: .infinity)
         .stackStyle(StackStyle.Calculator())
         .alert(alertTitle, isPresented: $isAlertPresented) {

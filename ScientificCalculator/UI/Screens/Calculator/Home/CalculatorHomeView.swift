@@ -20,6 +20,8 @@ struct CalculatorHomeView: View, CalculatorHomeProtocol {
             )
             CalculatorViewContent()
         }
+        .accessibilityElement(children: .contain)
+        .accessibilityIdentifier("calculatorHome")
         .background(ColorStyle.background.color)
         .sheet(isPresented: $isShowSettings) {
             EmptyView()

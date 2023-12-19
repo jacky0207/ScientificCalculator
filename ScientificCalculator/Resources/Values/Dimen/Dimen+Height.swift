@@ -24,6 +24,7 @@ extension Dimen {
     enum Height {
         case buttonLabel
         case icon
+        case calculatorEquation
     }
 }
 
@@ -34,6 +35,8 @@ extension Dimen.Height {
             return Dimen.width(.icon)
         case .buttonLabel:
             return 36
+        case .calculatorEquation:
+            return 40
         }
     }
 }

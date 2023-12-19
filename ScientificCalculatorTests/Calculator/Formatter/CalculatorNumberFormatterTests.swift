@@ -53,4 +53,8 @@ final class CalculatorNumberFormatterTests: XCTestCase {
     func testCalculatorNumberFormatter_SaveToVariable_AppendString() throws {
         XCTAssertEqual(formatter.string(number: 100, variable: .a), "100->a")
     }
+
+    func testCalculatorNumberFormatter_WithEquation() throws {
+        XCTAssertEqual(formatter.string(equation: "1+2", number: 3, variable: .a), "1+2=3->a")
+    }
 }

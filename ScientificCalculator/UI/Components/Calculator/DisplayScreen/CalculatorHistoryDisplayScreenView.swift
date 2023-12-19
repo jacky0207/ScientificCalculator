@@ -17,6 +17,8 @@ struct CalculatorHistoryDisplayScreenView: View {
             CalculatorDisplayScreenHistoryView(logs: logs)
             CalculatorHistoryDisplayScreenEquationView(text)
         }
+        .accessibilityElement(children: .contain)
+        .accessibilityIdentifier("calculatorDisplayScreen")
         .stackStyle(StackStyle.CalculatorDisplayScreen())
     }
 }
@@ -50,6 +52,7 @@ struct CalculatorDisplayScreenHistoryView: View {
             variable: log.variable
         ))
         .tracking(tracking)
+        .accessibilityIdentifier("calculatorDisplayScreenHistoryLog")
         .textStyle(TextStyle.CalculatorDisplayLog())
         .frame(maxWidth: .infinity, alignment: .trailing)
     }
@@ -64,24 +67,16 @@ struct CalculatorHistoryDisplayScreenEquationView: View {
     }
 
     var body: some View {
-        if text.isEmpty {
-            emptyContent()
-        } else {
-            ScrollView(.horizontal, showsIndicators: false) {
-                content(text)
-                    .rotationEffect(Angle(degrees: 180))
-            }
-            .rotationEffect(Angle(degrees: 180))
+        ScrollView(.horizontal, showsIndicators: false) {
+            content(text)
+                .rotationEffect(Angle(degrees: 180))
         }
-    }
-
-    func emptyContent() -> some View {
-        Text(" ")
-            .textStyle(TextStyle.CalculatorDisplayEquation())
+        .rotationEffect(Angle(degrees: 180))
     }
 
     func content(_ text: String) -> some View {
         Text(text)
+            .accessibilityIdentifier("calculatorDisplayScreenEquation")
             .textStyle(TextStyle.CalculatorDisplayEquation())
     }
 }

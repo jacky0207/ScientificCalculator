@@ -65,6 +65,7 @@ extension TextStyle {
     struct CalculatorDisplayEquation: ViewModifier {
         func body(content: Content) -> some View {
             content
+                .frame(minHeight: Dimen.height(.calculatorEquation))
                 .textStyle(TextStyle.Medium(foregroundColor: ColorStyle.textSecondary.color, fontSize: .xxLarge))
         }
     }

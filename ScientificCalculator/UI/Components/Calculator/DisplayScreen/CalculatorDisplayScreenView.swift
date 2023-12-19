@@ -18,6 +18,8 @@ struct CalculatorDisplayScreenView: View {
             CalculatorDisplayScreenEquationView(text)
             CalculatorDisplayScreenAnswerView(answer, variable: variable)
         }
+        .accessibilityElement(children: .contain)
+        .accessibilityIdentifier("calculatorDisplayScreen")
         .stackStyle(StackStyle.CalculatorDisplayScreen())
     }
 }
@@ -31,30 +33,22 @@ struct CalculatorDisplayScreenEquationView: View {
     }
 
     var body: some View {
-        if text.isEmpty {
-            emptyContent()
-        } else {
-            ScrollViewReader { proxy in
-                ScrollView(.horizontal, showsIndicators: false) {
-                    content(text)
-                        .rotationEffect(Angle(degrees: 180))
-                        .id(0)
-                }
-                .rotationEffect(Angle(degrees: 180))
-                .onChange(of: text) { _ in
-                    proxy.scrollTo(0, anchor: .leading)
-                }
+        ScrollViewReader { proxy in
+            ScrollView(.horizontal, showsIndicators: false) {
+                content(text)
+                    .rotationEffect(Angle(degrees: 180))
+                    .id(0)
+            }
+            .rotationEffect(Angle(degrees: 180))
+            .onChange(of: text) { _ in
+                proxy.scrollTo(0, anchor: .leading)
             }
         }
     }
 
-    func emptyContent() -> some View {
-        Text(" ")
-            .textStyle(TextStyle.CalculatorDisplayEquation())
-    }
-
     func content(_ text: String) -> some View {
         Text(text)
+            .accessibilityIdentifier("calculatorDisplayScreenEquation")
             .textStyle(TextStyle.CalculatorDisplayEquation())
     }
 }
