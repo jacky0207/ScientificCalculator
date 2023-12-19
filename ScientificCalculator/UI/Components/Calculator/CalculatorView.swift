@@ -15,6 +15,9 @@ struct CalculatorView: View, CalculatorViewProtocol {
     @State private var alertTitle = ""
     @State private var isAlertPresented = false
 
+    var functionEnabled: Bool = true
+    var variableEnabled: Bool = false
+    var saveToEnabled: Bool = false
     var historyEnabled: Bool = false
 
     var body: some View {
@@ -36,7 +39,10 @@ struct CalculatorView: View, CalculatorViewProtocol {
                 deleteAction: delete,
                 clearAllAction: clearAll,
                 calculateAction: calculate,
+                functionEnabled: functionEnabled,
                 angle: calculator.angle,
+                variableEnabled: variableEnabled,
+                isSaveToEnabled: saveToEnabled,
                 calculateToVariableAction: calculate
             )
         }
