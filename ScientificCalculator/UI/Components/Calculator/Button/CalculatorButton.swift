@@ -8,6 +8,10 @@
 import SwiftUI
 
 struct CalculatorButton<Label: View>: View {
+    static func identifier(_ identifier: String) -> String where Label == EmptyView {
+        return "calculatorButton-\(identifier)"
+    }
+
     var backgroundColor: Color
     var backgroundHighlightColor: Color
     var action: () -> Void
@@ -25,54 +29,60 @@ struct CalculatorButton<Label: View>: View {
     }
 }
 
-struct CalculatorPrimaryButton<Label: View>: View {
+struct CalculatorPrimaryButton: View {
     var action: () -> Void
-    var label: () -> Label
+    var text: String
 
     var body: some View {
         CalculatorButton(
             backgroundColor: ColorStyle.primary.color,
             backgroundHighlightColor: ColorStyle.primaryHighlight.color,
             action: action,
-            label: label
+            label: { Text(text) }
         )
+        .accessibilityAddTraits(.isButton)
+        .accessibilityIdentifier(CalculatorButton.identifier(text))
     }
 }
 
-struct CalculatorSecondaryButton<Label: View>: View {
+struct CalculatorSecondaryButton: View {
     var action: () -> Void
-    var label: () -> Label
+    var text: String
 
     var body: some View {
         CalculatorButton(
             backgroundColor: ColorStyle.secondary.color,
             backgroundHighlightColor: ColorStyle.secondaryHighlight.color,
             action: action,
-            label: label
+            label: { Text(text) }
         )
+        .accessibilityAddTraits(.isButton)
+        .accessibilityIdentifier(CalculatorButton.identifier(text))
     }
 }
 
-struct CalculatorErrorButton<Label: View>: View {
+struct CalculatorErrorButton: View {
     var action: () -> Void
-    var label: () -> Label
+    var text: String
 
     var body: some View {
         CalculatorButton(
             backgroundColor: ColorStyle.error.color,
             backgroundHighlightColor: ColorStyle.errorHighlight.color,
             action: action,
-            label: label
+            label: { Text(text) }
         )
+        .accessibilityAddTraits(.isButton)
+        .accessibilityIdentifier(CalculatorButton.identifier(text))
     }
 }
 
 struct CalculatorButton_Previews: PreviewProvider {
     static var previews: some View {
         VStack {
-            CalculatorPrimaryButton(action: {}, label: { Text("Primary") })
-            CalculatorSecondaryButton(action: {}, label: { Text("Secondary") })
-            CalculatorErrorButton(action: {}, label: { Text("Error") })
+            CalculatorPrimaryButton(action: {}, text: "Primary")
+            CalculatorSecondaryButton(action: {}, text: "Secondary")
+            CalculatorErrorButton(action: {}, text: "Error")
         }
     }
 }

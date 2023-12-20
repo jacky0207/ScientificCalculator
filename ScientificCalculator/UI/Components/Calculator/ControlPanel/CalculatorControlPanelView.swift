@@ -54,6 +54,8 @@ struct CalculatorControlPanelView: View {
                 calculateAction: calculateAction
             )
         }
+        .accessibilityElement(children: .contain)
+        .accessibilityIdentifier("calculatorControlPanel")
     }
 }
 
@@ -69,19 +71,22 @@ struct CalculatorActionControlPanelView: View {
         VStack(alignment: .leading, spacing: Dimen.spacing(.small)) {
             HStack(spacing: Dimen.spacing(.small)) {
                 if functionEnabled {
-                    CalculatorSecondaryButton(action: { isFnSelected.toggle() }) {
-                        Text("Fn")
-                    }
+                    CalculatorSecondaryButton(
+                        action: { isFnSelected.toggle() },
+                        text: "Fn"
+                    )
                 }
                 if isSaveToEnabled {
-                    CalculatorSecondaryButton(action: { isSaveToSelected.toggle() }) {
-                        Text("STO")
-                    }
+                    CalculatorSecondaryButton(
+                        action: { isSaveToSelected.toggle() },
+                        text: "STO"
+                    )
                 }
                 if functionEnabled {
-                    CalculatorSecondaryButton(action: { angle.toggle() }) {
-                        Text(angle.rawValue)
-                    }
+                    CalculatorSecondaryButton(
+                        action: { angle.toggle() },
+                        text: angle.rawValue
+                    )
                 }
             }
         }
@@ -101,12 +106,14 @@ struct CalculatorBasicControlPanelView: View {
                 CalculatorKeyButton(.number(.seven), action: appendKeyAction)
                 CalculatorKeyButton(.number(.eight), action: appendKeyAction)
                 CalculatorKeyButton(.number(.nine), action: appendKeyAction)
-                CalculatorErrorButton(action: deleteAction) {
-                    Text("DEL")
-                }
-                CalculatorErrorButton(action: clearAllAction) {
-                    Text("AC")
-                }
+                CalculatorErrorButton(
+                    action: deleteAction,
+                    text: "DEL"
+                )
+                CalculatorErrorButton(
+                    action: clearAllAction,
+                    text: "AC"
+                )
             }
             HStack(spacing: Dimen.spacing(.small)) {
                 CalculatorKeyButton(.number(.four), action: appendKeyAction)
@@ -131,9 +138,10 @@ struct CalculatorBasicControlPanelView: View {
                     CalculatorKeyButton(.function(.pi), action: appendKeyAction)
                 }
                 CalculatorKeyButton(.variable(.answer), action: appendKeyAction)
-                CalculatorPrimaryButton(action: calculateAction) {
-                    Text("EXE")
-                }
+                CalculatorPrimaryButton(
+                    action: calculateAction,
+                    text: "EXE"
+                )
             }
         }
     }

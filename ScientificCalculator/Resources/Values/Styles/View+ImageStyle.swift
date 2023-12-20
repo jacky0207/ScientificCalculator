@@ -14,5 +14,11 @@ extension View {
 }
 
 struct ImageStyle {
-    
+    struct Icon: ViewModifier {
+        func body(content: Content) -> some View {
+            content
+                .frame(width: Dimen.width(.icon), height: Dimen.height(.icon))
+                .foregroundColor(ColorStyle.primary.color)
+        }
+    }
 }

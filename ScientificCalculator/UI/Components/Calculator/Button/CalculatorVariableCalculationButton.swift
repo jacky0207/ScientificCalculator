@@ -27,14 +27,20 @@ struct CalculatorVariableCalculationButton: View {
             action: { action(variable) },
             label: { CalculatorVariableCalculationButtonLabel(variable: variable) }
         )
+        .accessibilityAddTraits(.isButton)
+        .accessibilityIdentifier(CalculatorButton.identifier(CalculatorVariableCalculationButtonLabel.text(for: variable)))
     }
 }
 
 struct CalculatorVariableCalculationButtonLabel: View {
+    static func text(for variable: CalculatorVariable) -> String {
+        return "->\(variable.rawValue)"
+    }
+
     var variable: CalculatorVariable
 
     var body: some View {
-        Text("->\(variable.rawValue)")
+        Text(Self.text(for: variable))
     }
 }
 

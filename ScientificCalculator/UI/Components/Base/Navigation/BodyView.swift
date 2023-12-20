@@ -21,12 +21,14 @@ struct BodyView<Content: View, ToolbarLeading: View, ToolbarTrailing: View>: Vie
         titleDisplayType: NavigationBarItem.TitleDisplayMode = .inline,
         @ViewBuilder toolbarLeading: @escaping () -> ToolbarLeading = { EmptyView() },
         @ViewBuilder toolbarTrailing: @escaping () -> ToolbarTrailing = { EmptyView() },
+        backgroundColor: Color = .white,
         @ViewBuilder content: @escaping () -> Content
     ) {
         self.title = title
         self.titleDisplayType = titleDisplayType
         self.toolbarLeading = toolbarLeading
         self.toolbarTrailing = toolbarTrailing
+        self.backgroundColor = backgroundColor
         self.content = content
     }
 
@@ -34,6 +36,7 @@ struct BodyView<Content: View, ToolbarLeading: View, ToolbarTrailing: View>: Vie
         title: String,
         titleDisplayType: NavigationBarItem.TitleDisplayMode = .inline,
         @ViewBuilder toolbar: @escaping () -> ToolbarTrailing,
+        backgroundColor: Color = .white,
         @ViewBuilder content: @escaping () -> Content
     ) where ToolbarLeading == EmptyView {
         self.init(
@@ -41,6 +44,7 @@ struct BodyView<Content: View, ToolbarLeading: View, ToolbarTrailing: View>: Vie
             titleDisplayType: titleDisplayType,
             toolbarLeading: { EmptyView() },
             toolbarTrailing: toolbar,
+            backgroundColor: backgroundColor,
             content: content
         )
     }

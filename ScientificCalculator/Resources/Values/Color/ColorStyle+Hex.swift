@@ -27,9 +27,9 @@ extension ColorStyle {
         case .textSecondary:
             return 0x000000
         case .background:
-            return 0xC0D8FB
-        case .calculatorBackground:
             return 0xDEDEDE
+        case .calculatorBackground:
+            return ColorStyle.background.hexValue
         case .calculatorDisplayScreenBackground:
             return 0xE1EBF0
         case .shadow:

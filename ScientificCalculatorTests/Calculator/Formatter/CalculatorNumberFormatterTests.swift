@@ -39,18 +39,22 @@ final class CalculatorNumberFormatterTests: XCTestCase {
     }
 
     func testCalculatorNumberFormatter_NoNeedFormat_OriginalString() throws {
-        XCTAssertEqual(formatter.string(from: 9999999999, variable: .answer), "9999999999")
+        XCTAssertEqual(formatter.string(number: 9999999999, variable: .answer), "9999999999")
     }
 
     func testCalculatorNumberFormatter_NeedFormat_FormattedString() throws {
-        XCTAssertEqual(formatter.string(from: 10000000000, variable: .answer), "1xıo10")
+        XCTAssertEqual(formatter.string(number: 10000000000, variable: .answer), "1xıo10")
     }
 
     func testCalculatorNumberFormatter_ClearAnswer_HideVariable() throws {
-        XCTAssertEqual(formatter.string(from: 0, variable: .a), "0")
+        XCTAssertEqual(formatter.string(number: 0, variable: .a), "0")
     }
 
     func testCalculatorNumberFormatter_SaveToVariable_AppendString() throws {
-        XCTAssertEqual(formatter.string(from: 100, variable: .a), "100->a")
+        XCTAssertEqual(formatter.string(number: 100, variable: .a), "100->a")
+    }
+
+    func testCalculatorNumberFormatter_WithEquation() throws {
+        XCTAssertEqual(formatter.string(equation: "1+2", number: 3, variable: .a), "1+2=3->a")
     }
 }

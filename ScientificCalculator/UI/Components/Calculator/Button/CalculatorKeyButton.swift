@@ -24,6 +24,7 @@ struct CalculatorKeyButton: View {
             action: { action(key) },
             label: { CalculatorKeyButtonLabel(key: key) }
         )
+        .accessibilityIdentifier(CalculatorButton.identifier(key.text))
     }
 }
 

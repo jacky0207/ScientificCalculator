@@ -23,14 +23,20 @@ extension Dimen {
 extension Dimen {
     enum Height {
         case buttonLabel
+        case icon
+        case calculatorEquation
     }
 }
 
 extension Dimen.Height {
     var rawValue: CGFloat {
         switch self {
+        case .icon:
+            return Dimen.width(.icon)
         case .buttonLabel:
             return 36
+        case .calculatorEquation:
+            return 40
         }
     }
 }
