@@ -9,7 +9,7 @@ import XCTest
 
 class HomeUITester: UITester {
     var app: XCUIApplication
-    lazy var root: XCUIElement = app.otherElements["calculatorHome"]
+    lazy var root: XCUIElement = app.otherElements["Home"]
     lazy var calculator = root.otherElements["calculator"]
     lazy var calculatorDisplayScreen = root.otherElements["calculatorDisplayScreen"]
     lazy var calculatorDisplayScreenEquation = root.staticTexts["calculatorDisplayScreenEquation"]

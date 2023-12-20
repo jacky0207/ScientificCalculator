@@ -1,5 +1,5 @@
 //
-//  CalculatorHomeView.swift
+//  HomeView.swift
 //  ScientificCalculator
 //
 //  Created by Jacky Lam on 2023-12-12.
@@ -7,8 +7,8 @@
 
 import SwiftUI
 
-struct CalculatorHomeView: View, CalculatorHomeProtocol {
-    @ObservedObject var viewModel: CalculatorHomeViewModel
+struct HomeView: View, HomeProtocol {
+    @ObservedObject var viewModel: HomeViewModel
     @State private var isShowSettings = false
     @State private var isShowProgram = false
 
@@ -21,7 +21,7 @@ struct CalculatorHomeView: View, CalculatorHomeProtocol {
             CalculatorViewContent()
         }
         .accessibilityElement(children: .contain)
-        .accessibilityIdentifier("calculatorHome")
+        .accessibilityIdentifier("Home")
         .background(ColorStyle.background.color)
         .sheet(isPresented: $isShowSettings) {
             EmptyView()
@@ -77,8 +77,8 @@ struct CalculatorViewContent: View {
     }
 }
 
-struct CalculatorHomeView_Previews: PreviewProvider {
+struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
-        CalculatorHomeView(viewModel: CalculatorHomeViewModel(diContainer: DIContainer()))
+        HomeView(viewModel: HomeViewModel(diContainer: DIContainer()))
     }
 }
